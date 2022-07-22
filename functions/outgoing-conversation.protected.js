@@ -8,6 +8,7 @@ exports.handler = async function (context, event, callback) {
         console.log('Frontline user identity: ' + event.Worker);
         const sfdcConnectionIdentity = await sfdcAuthenticate(context, event.Worker);
         const { connection } = sfdcConnectionIdentity;
+        console.log(connection);
         const outboundNumber = await getWorkerOutboundNumber(event.Worker, connection);
         switch (event.Location) {
             case 'GetProxyAddress': {

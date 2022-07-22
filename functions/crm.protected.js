@@ -70,6 +70,8 @@ const getCustomerDetailsByCustomerIdCallback = async (contactId, connection) => 
           Title: 1,
           MobilePhone: 1,
           'Account.Name': 1,
+          MailingAddress: 1,
+          Description: 1,
         }
       )
       .limit(1)
@@ -105,7 +107,7 @@ const getCustomerDetailsByCustomerIdCallback = async (contactId, connection) => 
         ],
         details: {
           title: "Information",
-          content: `${accountName} - ${sfdcRecord.Title}`
+          content: `${accountName} - ${sfdcRecord.Title}\n${sfdcRecord.MailingAddress.city}, ${sfdcRecord.MailingAddress.state}`
         }
       }
     }
